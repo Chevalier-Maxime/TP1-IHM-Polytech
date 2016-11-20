@@ -77,7 +77,7 @@ public class Main extends JFrame implements ListSelectionListener, ActionListene
 		split2.setResizeWeight(1);
 		split2.setDividerSize(0);
 		split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,split2,grapher);
-		split.setDividerSize(0);
+		split.setDividerSize(2);
 		
 		tool.setRollover(true);
 		tool.setFloatable(false);
@@ -115,8 +115,7 @@ public class Main extends JFrame implements ListSelectionListener, ActionListene
 
 	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("Je suis dans valueChanged");
+
 		grapher.setGras(list.getSelectedValue());
 		grapher.repaint();
 		
@@ -141,7 +140,7 @@ public class Main extends JFrame implements ListSelectionListener, ActionListene
 			else {
 	
 				int answer = JOptionPane.showConfirmDialog(null,
-						"Are you sure you wanna delete this function : "+list.getSelectedValue()+" ?","Confirmation" , JOptionPane.YES_NO_OPTION);
+						"Voulez vous vraiment supprimer la fonction : "+list.getSelectedValue()+" ?","Confirmation" , JOptionPane.YES_NO_OPTION);
 	
 				if(answer != JOptionPane.NO_OPTION)
 					grapher.functions.remove(list.getSelectedIndex());

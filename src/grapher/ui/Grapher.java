@@ -128,7 +128,6 @@ public class Grapher extends JPanel implements MouseListener, MouseMotionListene
 			//setstroke
 			Stroke s = g2.getStroke();
 			if(a_mettre_en_gras==functions.get(j)) {
-				System.out.println("coucou");
 				g2.setStroke(new BasicStroke(3));
 			}
 			int Ys[] = new int[N];
@@ -247,7 +246,7 @@ public class Grapher extends JPanel implements MouseListener, MouseMotionListene
 		case G_DRAGGING :
 			this.translate(pc.x - p.x, pc.y - p.y);
 			p=pc;
-			//ptite main mais c pa là si non psa la
+			this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			break;
 		case D_PRESSED :
 			state = State.D_DRAGGING;
@@ -294,8 +293,6 @@ public class Grapher extends JPanel implements MouseListener, MouseMotionListene
 				if(arg0.getButton()==MouseEvent.BUTTON1) 
 				{
 					state = State.G_PRESSED;
-					this.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		
 				}
 				else if(arg0.getButton()==MouseEvent.BUTTON3) 
 				{
@@ -323,6 +320,7 @@ public class Grapher extends JPanel implements MouseListener, MouseMotionListene
 					this.setCursor(Cursor.getDefaultCursor());
 				}
 				else state = State.G_DRAGGING;
+				break;
 			case D_PRESSED : 
 				if(arg0.getButton() == MouseEvent.BUTTON3)
 				{
@@ -351,7 +349,7 @@ public class Grapher extends JPanel implements MouseListener, MouseMotionListene
 				{
 					this.zoom(arg0.getLocationOnScreen(),5);
 				}
-				else
+				else if(arg0.getWheelRotation()<0)
 					this.zoom(arg0.getLocationOnScreen(),-5);
 				break;
 			default :
